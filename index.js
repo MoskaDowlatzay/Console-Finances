@@ -135,12 +135,20 @@ var finances = [
   // current data point
   // previous data point
 
+  let netTotal= 0
 // Total Months
 var totalMonths = finances.length;
-console.log(totalMonths)
+for (let i=0; i<finances.length; i++){
+  var currentMonth = finances[i][1];
+  netTotal += currentMonth
+  console.log(`net total is: ${netTotal}`)
+}
 
 let total = 0;
-for (let i = 0; i < totalMonths; i++) {
+for (let i = 0; i <totalMonths; i++) {
   total += finances[i][1];
   console.log(`Total Months: ${totalMonths}`);
 }
+
+//Total 
+console.log(`Total: $${total}`);
