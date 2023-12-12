@@ -135,20 +135,42 @@ var finances = [
   // current data point
   // previous data point
 
-  let netTotal= 0
 // Total Months
 var totalMonths = finances.length;
-for (let i=0; i<finances.length; i++){
-  var currentMonth = finances[i][1];
-  netTotal += currentMonth
-  console.log(`net total is: ${netTotal}`)
-}
+console.log(totalMonths)
 
 let total = 0;
-for (let i = 0; i <totalMonths; i++) {
+for (let i = 0; i < totalMonths; i++) {
   total += finances[i][1];
   console.log(`Total Months: ${totalMonths}`);
 }
-
 //Total 
 console.log(`Total: $${total}`);
+
+// Calculate changes and find the average change
+let totalChange = 0;
+for (let i = 1; i < totalMonths; i++) {
+  totalChange += finances[i][1] - finances[i - 1][1];
+}
+const averageChange = (totalChange / (totalMonths - 1)).toFixed(2);
+// Find the Greatest Increase and Greatest Decrease
+let maxIncrease = { change: 0 };
+let maxDecrease = { change: 0 };
+
+for (let i = 1; i < totalMonths; i++) {
+  const change = finances[i][1] - finances[i - 1][1];
+
+  if (change > maxIncrease.change) {
+    maxIncrease = { ...finances[i], change };
+  } else if (change < maxDecrease.change) {
+    maxDecrease = { ...finances[i], change };
+  }
+}
+console.log(`Average Change: $${averageChange}`);
+
+const greatestIncrease = `${maxIncrease[0]} ($${maxIncrease.change})`;
+const greatestDecrease = `${maxDecrease[0]} ($${maxDecrease.change})`;
+
+console.log(`Greatest Increase in Profits/Losses: ${greatestIncrease}`);
+console.log(`Greatest Decrease in Profits/Losses: ${greatestDecrease}`);
+
