@@ -42,4 +42,5 @@ In this challenge, we'll be using the concepts we learned to complete the requir
 You are required to submit BOTH of the following for review:
 
 https://github.com/MoskaDowlatzay/Console-Finances
+https://moskadowlatzay.github.io/Console-Finances/
 
